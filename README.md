@@ -1,4 +1,4 @@
-# IT-Security
+# Introduction
 
 My notepad about stuff related to IT-security, and specifically penetration testing. Stuff I have come across that I don't feel like googeling again.
 
@@ -14,7 +14,7 @@ If you read about a vulnerability that you want to know more about I can really 
 
 Here is an example of such a search:
 
-```
+```text
 site:hackerone.com sql-injection
 ```
 
