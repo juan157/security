@@ -1,3 +1,7 @@
+---
+description: 'This is a forked version of https://xapax.gitbooks.io/security/content/'
+---
+
 # Introduction
 
 My notepad about stuff related to IT-security, and specifically penetration testing. Stuff I have come across that I don't feel like googeling again.
@@ -6,7 +10,11 @@ I have used this book to try to write down how some things work, but at the same
 
 Also, this book is just a collection of stuff that is available on the interwebz. I am just a simple collector. I have tried to include a reference section to show where I found the technique. This book is my way of trying to give something back to the infosec community and I hope it can be useful to someone.
 
-You can read this book on [https://xapax.gitbooks.io/security/content/](https://xapax.gitbooks.io/security/content/). If you feel like contributing, or just forking it, you can do that from its github repo here: [https://github.com/xapax/security](https://github.com/xapax/security). If you feel like this is a good start, but you want to add and remove things and just make it yours you can just fork it and do whatever you want with it.
+My forked version that you are reading can be found here at [https://lamontns.gitbook.io/pentesting/](https://lamontns.gitbook.io/pentesting/)
+
+If you found my version, I would just stick with this one as I've fixed some errors and added in extra notes/content but it never hurts to check the original. The original source has a ton of great information and he may have updated his gitbook as well.
+
+You can read the original book on [https://xapax.gitbooks.io/security/content/](https://xapax.gitbooks.io/security/content/). If you feel like contributing, or just forking it, you can do that from its github repo here: [https://github.com/xapax/security](https://github.com/xapax/security). If you feel like this is a good start, but you want to add and remove things and just make it yours you can just fork it and do whatever you want with it.
 
 ## Find practical examples
 
