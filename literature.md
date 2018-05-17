@@ -1,4 +1,8 @@
-# Literature
+---
+description: 'Github Repos, Books, Guides, etc.'
+---
+
+# Resources
 
 ## Some Great Github repos
 

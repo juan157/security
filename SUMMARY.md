@@ -108,5 +108,5 @@
   * [WEP](wifi/wep.md)
   * [WPS](wifi/wps.md)
 * [Physical access to machine](physical-access-to-machine.md)
-* [Literature](literature.md)
+* [Resources](literature.md)
 
