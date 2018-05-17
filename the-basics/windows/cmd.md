@@ -183,7 +183,7 @@ Z:\>c:
 C:\
 ```
 
-** Remove a network drive - umount it**
+ **Remove a network drive - umount it**
 
 First leave the drive if you are in it:
 
