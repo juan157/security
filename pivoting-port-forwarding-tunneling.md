@@ -35,7 +35,7 @@ attacker/port-21 ----> ftp-server/port-21
 we will have
 
 ```text
-attacker/port-80 ----> port-80/proxy-machine/port-21 ----> ftp-server
+attacker:port-80 ----> port-80:>proxy-machine:>port-21 ----> ftp-server
 ```
 
 And the other way around of course, to receive the traffic.
@@ -46,11 +46,15 @@ Okay, so how do we go about actually implementing this?
 
 So we can set up this port forwarding machine with the help of rinetd.
 
-To make it clear, we have the following machines: Machine1 - IP: 192.168.12.34 - Behind firewall, and wants to connect to Machine3. Machine2 - IP: 192.168.12.45 - Forwards incomming connections to Machine3 Machine3 - IP: 10.1.1.20 - Hosts the ftp-server that machine1 wants to connect to.
+Machine 1:    1.1.1.1
 
-```text
-apt-get install rinetd
-```
+Machine 2:    2.2.2.2
+
+Machine 3:    3.3.3.3
+
+To make it clear, we have the following machines: Machine1\(1.1.1.1\) - Behind firewall, and wants to connect to Machine3\(3.3.3.3\). Machine2\(2.2.2.2\) - Forwards incomming connections to the ftp server on Machine3
+
+`$ apt-get install rinetd`
 
 This is the default config file `/etc/rinetd.conf`:
 
@@ -86,14 +90,15 @@ This is the essential part of the configuration file, this is where we create th
 
 ```text
 # bindadress    bindport  connectaddress  connectport
-192.168.12.45    80         10.1.1.20       21
+2.2.2.2          80         3.3.3.3       21
+<pivot-ip>    <connect>   <target-ip>    <target port/service>
 ```
 
 ```text
 /etc/init.d/rinetd restart
 ```
 
-So the bind-address is where the proxy receieves the connection, and the connectaddress is the machine it forwards the connection to.
+So the bind-address is where the proxy receives the connection, and the connect address is the machine it forwards the connection to.
 
 ### SSH Tunneling - Port forwarding on SSH
 
@@ -280,5 +285,61 @@ This is a good video-explanation:
 
 [https://www.offensive-security.com/metasploit-unleashed/pivoting/](https://www.offensive-security.com/metasploit-unleashed/pivoting/)
 
-[http://ways2hack.com/how-to-do-pivoting-attack/](http://ways2hack.com/how-to-do-pivoting-attack/)
+{% embed data="{\"url\":\"http://ways2hack.com/how-to-do-pivoting-attack/\",\"type\":\"link\",\"title\":\"How to do Pivoting Attack - Ways To Hack\",\"description\":\"Hello guys in this tutorial you will learn how a attacker use victim as a Pivot to hack deeper into the network. In this scenario you will see that the Attacker does not have direct access to Server 2. So...\",\"thumbnail\":{\"type\":\"thumbnail\",\"url\":\"https://ways2hack.com/wp-content/uploads/2015/09/2.jpg\",\"width\":624,\"height\":333,\"aspectRatio\":0.5336538461538461}}" %}
+
+## SSH Pivoting Continued!
+
+```text
+$ ssh -L 9000:imgur.com:80 user@example.com
+```
+
+The key here is `-L` which says we’re doing local port forwarding. Then it says we’re forwarding our local port `9000` to [`imgur.com`](http://imgur.com/)`:80`, which is the default port for HTTP. Now open your browser and go to [http://localhost:9000](http://localhost:9000/).
+
+### Connecting to a database behind a firewall
+
+Another good example is if you need to access a port on your server which can only be accessed from `localhost` and not remotely.
+
+An example here is when you need to connect to a database console, which only allows local connection for security reasons. Let’s say you’re running PostgreSQL on your server, which by default listens on the port `5432`.
+
+```text
+$ ssh -L 9000:localhost:5432 user@example.com
+```
+
+The part that changed here is the `localhost:5432`, which says to forward connections from your local port `9000` to `localhost:5432` on your server. Now we can simply connect to our database.
+
+```text
+$ psql -h localhost -p 9000
+```
+
+Now let’s stop here for a little bit an explain what is actually going on. In the first example the `9000:imgur.com:80` is actually saying `forward my local port 9000 to` [`imgur.com`](http://imgur.com/) `at port 80`. You can imagine SSH on your server actually making a connection \(a tunnel\) between those two ports, one on your local machine, and one on the target destination.
+
+### Remote port forwarding
+
+Now comes the second part of this tutorial, which is remote port forwarding. This is again best to explain with an example.
+
+Say that you’re developing a Rails application on your local machine, and you’d like to show it to a friend. Unfortunately your ISP didn’t provide you with a public IP address, so it’s not possible to connect to your machine directly via the internet.
+
+Sometimes this can be solved by configuring NAT \(Network Address Translation\) on your router, but this doesn’t always work, and it requires you to change the configuration on your router, which isn’t always desirable. This solution also doesn’t work when you don’t have admin access on your network.
+
+To fix this problem you need to have another computer, which is publicly accessible and have SSH access to it. It can be any server on the internet, as long as you can connect to it. We’ll tell SSH to make a tunnel that opens up a new port on the server, and connects it to a local port on your machine.
+
+```text
+$ ssh -R 9000:localhost:3000 user@example.com
+```
+
+The syntax here is very similar to local port forwarding, with a single change of `-L` for `-R`. But as with local port forwarding, the syntax remains the same.
+
+First you need to specify the port on which th remote server will listen, which in this case is `9000`, and next follows `localhost` for your local machine, and the local port, which in this case is `3000`.
+
+There is one more thing you need to do to enable this. SSH doesn’t by default allow remote hosts to forwarded ports. The setting needs to be changed in `/etc/ssh/sshd_config`
+
+### A few closing tips
+
+You might have noticed that every time we create a tunnel you also SSH into the server and get a shell. This isn’t usually necessary, as you’re just trying to create a tunnel. To avoid this we can run SSH with the `-nNT` flags, such as the following, which will cause SSH to not allocate a tty and only do the port forwarding.
+
+```text
+$ ssh -nNT -L 9000:imgur.com:80 user@example.com
+```
+
+ [The Black Magic of SSH / SSH Can Do That?](http://vimeo.com/54505525)
 
