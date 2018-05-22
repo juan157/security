@@ -19,7 +19,7 @@
     * [Transfering files on Windows](the-basics/transferring-files/transfering-files-on-windows.md)
   * [Firewalls](the-basics/firewalls.md)
   * [General tips and tricks](the-basics/general-tips-and-tricks.md)
-  * Cryptography
+  * [Commands Cheat Sheet](the-basics/cryptography.md)
 * [Recon and Information Gathering Phase](recon-and-information-gathering-phase/README.md)
   * [Passive Information Gatherig](recon-and-information-gathering-phase/passive-information-gatherig/README.md)
     * Identify IP-addresses and Subdomains
