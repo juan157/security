@@ -8,6 +8,12 @@ For the examples using `curl` and `wget` we need to download from a web-server. 
 python -m SimpleHTTPServer 9999
 ```
 
+### Or using PHP
+
+```text
+$ php -S 0.0.0.0:80    # choose whatever port you want at the end there.
+```
+
 ## Wget
 
 You can download files using `wget` like this:
