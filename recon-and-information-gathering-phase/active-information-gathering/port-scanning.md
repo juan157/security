@@ -1,4 +1,17 @@
+---
+description: Different commands and techniques to scan ports.
+---
+
 # Port Scanning
+
+## Quick and Effective Port Scanning
+
+###  Initial Scans
+
+```text
+$ nmap -sT -T4 -p- <target-ip> --open
+$ nmap -sV -A -T3 --top-ports 20 <target-ip>
+```
 
 ## TLDR
 
