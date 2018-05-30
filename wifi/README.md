@@ -41,7 +41,7 @@ Then we have another section of information. `Station` - MAC address of each ass
 
 1. Find the network you want to access.
    * `airodump-ng --bssid A7:B6:68:D4:1D:91 -c 11 -w cowpatty mon0`
-   * So this command will record or traffic from the device with that specific MAC-address. -c defines the channel. and `-w cowpatty` means that we are going to save the packet capture with that name. 
+   * So this command will record or traffic from the device with that specific MAC-address. -c defines the channel. and `-w cowpatty` means that we are going to save the packet capture with that name.
 
      Now we just have to wait for a user to connect to that network. And when he/she does we will record that handshake.
 

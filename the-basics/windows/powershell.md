@@ -38,13 +38,7 @@ With get-member you can list all the properties and methods of the object that t
 Get-Member
 For example:
 Get-Command | Get-Member
-Get-Process | Get-Member
-```
-
-Select-XXX
-
-```text
-Select-object
+Get-Process | Get-Membeobject
 ```
 
 #### Variables
@@ -53,11 +47,10 @@ Select-object
 $testVar = "blabla"
 ```
 
-**Wget / Download a file**
+**File Download**
 
 ```text
-Invoke-WebRequest <uri>
-wget <uri>
+
 ```
 
 **Grep**

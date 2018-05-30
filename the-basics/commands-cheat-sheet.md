@@ -425,15 +425,10 @@ What is the name of your organizational unit?
 What is the name of your organization?
 [Unknown]: Offensive Security
 What is the name of your City or Locality?
-[Unknown]: localhost
 What is the name of your State or Province?
-[Unknown]: 127.0.0.1
 What is the two-letter country code for this unit?
-[Unknown]: US
 Is CN=Offensive Security, OU=Ownage Dept, O=Offensive Security, L=localhost,
 ST=127.0.0.1, C=US correct?
-[no]: yes
-
 $ jarsigner -keystore mykeystore -storepass password123 -keypass mykeypass
 -signedjar SignedJava.jar Java.jar signapplet
 
@@ -496,11 +491,11 @@ $ systemctl start apache2
 
 ### SQL Injection
 
-in username field enter:  
+in username field enter:
 
 ```text
 wronguser' OR 1=1 LIMIT 1;#
-admin' or 1=1 limit 1 -- 
+admin' or 1=1 limit 1 --
 ```
 
 ```text

@@ -6,7 +6,7 @@ description: Different commands and techniques to scan ports.
 
 ## Quick and Effective Port Scanning
 
-###  Initial Scans
+### Initial Scans
 
 ```text
 $ nmap -sT -T4 -p- <target-ip> --open

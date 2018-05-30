@@ -19,7 +19,7 @@
     * [Transfering files on Windows](the-basics/transferring-files/transfering-files-on-windows.md)
   * [Firewalls](the-basics/firewalls.md)
   * [General tips and tricks](the-basics/general-tips-and-tricks.md)
-  * [Commands Cheat Sheet](the-basics/cryptography.md)
+  * [Commands Cheat Sheet](the-basics/commands-cheat-sheet.md)
 * [Recon and Information Gathering Phase](recon-and-information-gathering-phase/README.md)
   * [Passive Information Gatherig](recon-and-information-gathering-phase/passive-information-gatherig/README.md)
     * Identify IP-addresses and Subdomains
@@ -108,5 +108,5 @@
   * [WEP](wifi/wep.md)
   * [WPS](wifi/wps.md)
 * [Physical access to machine](physical-access-to-machine.md)
-* [Resources](literature.md)
+* [Resources](resources.md)
 

@@ -46,11 +46,11 @@ Okay, so how do we go about actually implementing this?
 
 So we can set up this port forwarding machine with the help of rinetd.
 
-Machine 1:    1.1.1.1
+Machine 1: 1.1.1.1
 
-Machine 2:    2.2.2.2
+Machine 2: 2.2.2.2
 
-Machine 3:    3.3.3.3
+Machine 3: 3.3.3.3
 
 To make it clear, we have the following machines: Machine1\(1.1.1.1\) - Behind firewall, and wants to connect to Machine3\(3.3.3.3\). Machine2\(2.2.2.2\) - Forwards incomming connections to the ftp server on Machine3
 
@@ -341,5 +341,5 @@ You might have noticed that every time we create a tunnel you also SSH into the 
 $ ssh -nNT -L 9000:imgur.com:80 user@example.com
 ```
 
- [The Black Magic of SSH / SSH Can Do That?](http://vimeo.com/54505525)
+[The Black Magic of SSH / SSH Can Do That?](http://vimeo.com/54505525)
 
