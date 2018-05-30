@@ -4,6 +4,12 @@ description: 'This is a forked version of https://xapax.gitbooks.io/security/con
 
 # Introduction
 
+This is an extension to xapax's security notebook. I will primarily be using it to house my notes for pentesting. 
+
+-Chris Mandich.
+
+-- -- -- --
+
 My notepad about stuff related to IT-security, and specifically penetration testing. Stuff I have come across that I don't feel like googeling again.
 
 I have used this book to try to write down how some things work, but at the same time I want to use it as a reference book to find commands and things I just can't remember. Therefore I have tried to create a TLDR section in the beginning of some chapters where I have copy-paste ready commands that are useful. And if you want to know more you can continue to read the rest of the chapter. This is my way of making the book a hybrid between the Red Team Field Manual and a standard introduction book to pentesting.
