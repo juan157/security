@@ -50,21 +50,28 @@ $testVar = "blabla"
 **File Download**
 
 ```text
+# PowerShell One Liner, works on PowerShell 2.0+ 
+    (New-Object Net.WebClient).DownloadFile('http://<uri>','c:\windows\temp\<file_name>')
 
+# PowerShell Invoke-WebRequest, requires PowerShell 3.0+ 
+    Invoke-WebRequest -Uri <uri> -OutFile <file_name>
 ```
 
-**Grep**
+**Searching through results**
 
 ```text
-Select string can be used like grep
-get-command | select-string blabla
+# Select-String (Grep alternative)
+Get-Command | Select-String -Pattern "^get-"
 ```
 
-**General commands that can be used on objects**
+**General PS cmdlets to interrogate objects**
+
+Additional information about Powershell cmdlets can be found on [Microsoft Docs](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/?view=powershell-6)
 
 ```text
-measure-object -words
-get-content fil.txt | measure-object words
+# Dump of useful PowerShell cmdlets for objects
+    Select-Object
+    Measure-Object
 ```
 
 ### Working with filesystem
@@ -72,45 +79,61 @@ get-content fil.txt | measure-object words
 **List all files in current directory**
 
 ```text
-get-childitem
-gci
+# List directory contents
+    Get-ChildItem 
 
-List hidden files too
-gci -Force
+# List files in directory
+    Get-ChildItem -File
+    
+# List Directories in Directory
+    Get-ChildItem -Directory
 
-List all files recurisvely
-gci -rec
+# List File Attributes
+    Get-ChildItem -Directory | Select-Object FullName, Attributes
 
-Count the files
-(get-childitem).count
-List all files but exclude some folders
-gci -exclude AppData | gci -rec -force
+# List Hidden Files 
+    Get-ChildItem -Force 
+
+# Recursively list files and folders
+    Get-ChildItem | Measure-Object
 ```
 
 ### Working with files
 
 ```text
-Read a file
-Get-Content
-    gc
-    cat
-Count lines of file
-(get-content .\file).count
-Select specific line in a file (remember that it starts from 0)
-(gc .\file.txt)[10]
-gc .\file.txt | Select -index 10
+# Read conetents of a file 
+    Get-Content -Path <file name / location>
+
+# Count lines of a file
+    Get-Content -Path <file name / location> 
+    
+# Select specific line in a file 
+    (Get-Content -Path <file name / location>)[10] #prints line 11. 
+  or
+    Get-Content -Path <file name / location> | Select-Object -Index 10 #prints line 11.
 ```
 
 ### Services
 
+Series of cmdlets that allow for the interaction with Services include: list, stop, start, and restart. 
+
 ```text
-List services
-get-service
+# List Services 
+    Get-Service
+
+# Stop Services 
+    Stop-Service -Name <Service Name>
+
+# Start Service 
+    Start-Service -Name <Service Name> 
+
+# Restart Service 
+    Restart-Service -Name <Service Name> 
 ```
 
 ### Network related stuff
 
-Domain information
+Domain information. I believe the following cmdlets require [RSAT ](https://technet.microsoft.com/en-us/library/gg413289.aspx)to be installed and enabled before use. 
 
 ```text
 Get-ADDomain
@@ -124,10 +147,5 @@ Get-ADUser -f {Name -eq 'Karl, Martinez'} -properties *
 
 Get all AD Groups
 Get-ADGroup -filter *
-
-
-
-Resolve DNS
-Resolve-DNSname 10.10.10.10
 ```
 
