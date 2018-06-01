@@ -8,6 +8,14 @@ This is an extension to xapax's security notebook. I will primarily be using it 
 
 -Chris Mandich.
 
+TODO:
+
+```text
+# Mapping the document to the PTES Technical Guide: 
+    http://www.pentest-standard.org/index.php/PTES_Technical_Guidelines
+
+```
+
 -- -- -- --
 
 My notepad about stuff related to IT-security, and specifically penetration testing. Stuff I have come across that I don't feel like googeling again.
